@@ -4,6 +4,7 @@ import cx_Oracle
 from typing import List
 
 #constring = cx_Oracle.makedsn("localhost", "1521", "O12CR201")
+
 class DB:
     def __init__(self,ip,port,sid,user, password):
         #self.constring = cx_Oracle.makedsn(ip, port, sid) #makedsn服务名带01无效必须用这种形式dsn='11.11.48.64:1521/gxbxorcl01'
