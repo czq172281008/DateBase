@@ -35,6 +35,7 @@ class DB:
         def innerfunc(owner:str, searchstr:str)->List[str]:
             percentile:str = "%"
             searchstr = percentile.__add__(searchstr).__add__(percentile)
+            #SELECT table_name FROM dba_tables WHERE upper(owner)=upper('cwbase2_9999') and upper(table_name) like upper('%saxclb%') ORDER BY table_name
             tbquery = ''' SELECT table_name FROM dba_tables WHERE upper(owner)=upper(:1) and upper(table_name) like upper(:2) ORDER BY table_name'''
             self.cursor.execute(tbquery, (owner,searchstr))
             rows = list(self.cursor.fetchall())

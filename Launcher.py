@@ -11,75 +11,75 @@ os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'#处理结果集乱码
 
 class TextHandler:
     loggerFile = None
-    def addFile(self):
-        self.loggerFile = open("Data/DBDev_"+TextHandler.GetFileName()+".log","w") 
-        self.loggerFile.write("This is Python Learning Project. Created by deb S. \n")
-        self.loggerFile.write("Created at: "+TextHandler.GetTime())
-        self.loggerFile.flush()
+    # def addFile(self):
+        #self.loggerFile = open("Data/DBDev_"+TextHandler.GetFileName()+".log","w")
+        #self.loggerFile.write("This is Python Learning Project. Created by deb S. \n")
+        #self.loggerFile.write("Created at: "+TextHandler.GetTime())
+        #self.loggerFile.flush()
 
-    @classmethod
-    def GetFileName(cls)->str:
-        curtime = f'{datetime.now():%Y%m%d%H%M%S}'
-        return curtime
+    #@classmethod
+    # def GetFileName(cls)->str:
+        # curtime = f'{datetime.now():%Y%m%d%H%M%S}'
+        # return curtime
 
 
-    @classmethod
-    def GetTime(cls)->str:
-        curtime = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
-        curtime+='\n'
-        return curtime
+    #@classmethod
+    # def GetTime(cls)->str:
+        # curtime = f'{datetime.now():%Y-%m-%d %H:%M:%S%z}'
+        # curtime+='\n'
+        # return curtime
 
-    def AddList(self, list):
-        self.loggerFile.write(TextHandler.GetTime()+'\n')
-        self.loggerFile.writelines(map(lambda s:'\t'+ s + '\n', list))
-        self.loggerFile.flush()
+    # def AddList(self, list):
+        #self.loggerFile.write(TextHandler.GetTime()+'\n')
+        #self.loggerFile.writelines(map(lambda s:'\t'+ s + '\n', list))
+        #self.loggerFile.flush()
 
-    def AddLine(self, line, underline):
-        self.loggerFile.write('['+TextHandler.GetTime()+'] ')
-        self.loggerFile.write(line+'\n')
-        if underline :
-            self.loggerFile.write('-'*(len(line)+20))
-            self.loggerFile.write('\n')
-        self.loggerFile.flush()
+    # def AddLine(self, line, underline):
+        #self.loggerFile.write('['+TextHandler.GetTime()+'] ')
+        #self.loggerFile.write(line+'\n')
+        #if underline :
+        #    self.loggerFile.write('-'*(len(line)+20))
+        #    self.loggerFile.write('\n')
+        #self.loggerFile.flush()
     
-    def CBList(self,line,list):
-        self.AddLine(line,True)
-        self.AddList(list)
+    # def CBList(self,line,list):
+        #self.AddLine(line,True)
+        #self.AddList(list)
 
-    def AddDict(self,dictlist):
+    # def AddDict(self,dictlist):
 
-        if len(dictlist) == 0:
-            self.loggerFile.write("No Data found in output.\n")
-        else:
-            rowcount = 0
-            namestr =""
-            for header in dictlist[0].keys():
-                namestr+='{:20s}'.format('\t'+header+' ')
-            self.loggerFile.write(namestr+'\n')
-            self.loggerFile.write('-' * len(namestr)+'\n')
-            self.loggerFile.flush()
-            table =[]
-            for row in dictlist:
-                itemcount = 0
-                rowstr =""
-                for item in row.values():
-                    rowstr +='{:20s}'.format( str(item)+' ')
-                    itemcount = itemcount+1
-                table.append(rowstr)
-                rowcount=rowcount+1 
-            self.loggerFile.writelines(map(lambda s:'\t'+ s + '\n', table))      
-        self.loggerFile.flush()
+        #if len(dictlist) == 0:
+        #    self.loggerFile.write("No Data found in output.\n")
+        #else:
+        #     rowcount = 0
+        #     namestr =""
+        #     for header in dictlist[0].keys():
+        #         namestr+='{:20s}'.format('\t'+header+' ')
+        #     self.loggerFile.write(namestr+'\n')
+        #     self.loggerFile.write('-' * len(namestr)+'\n')
+        #     self.loggerFile.flush()
+        #     table =[]
+        #     for row in dictlist:
+        #         itemcount = 0
+        #         rowstr =""
+        #         for item in row.values():
+        #             rowstr +='{:20s}'.format( str(item)+' ')
+        #             itemcount = itemcount+1
+        #         table.append(rowstr)
+        #         rowcount=rowcount+1
+        #     self.loggerFile.writelines(map(lambda s:'\t'+ s + '\n', table))
+        # self.loggerFile.flush()
 
-    def CBDict(self,line,dict):
-        self.AddLine(line,True)
-        self.AddDict(dict)
+    # def CBDict(self,line,dict):
+        # self.AddLine(line,True)
+        # self.AddDict(dict)
 
-    def DontSave(self):
-        pass
+    # def DontSave(self):
+    #     pass
 
-    def Close(self):
-        if not self.loggerFile.closed():
-            self.loggerFile.close()
+    # def Close(self):
+    #     if not self.loggerFile.closed():
+    #         self.loggerFile.close()
 
 
 class MainUI(object):
@@ -102,13 +102,13 @@ class MainUI(object):
             for edit in editfields:
                 edit.setEnabled(False)
 
-            self.writer.AddLine('Connected to '+self.con.Version(),False)#困扰一天这条语句报错导致界面没有进行更新强制退出
+            # self.writer.AddLine('Connected to '+self.con.Version(),False)#困扰一天这条语句报错导致界面没有进行更新强制退出
         else:
             self.pushSearch.setEnabled(False)
             self.btnConnect.setText("Connect")
             for edit in editfields:
                 edit.setEnabled(True)
-            self.writer.AddLine('DB Disconnected',False)
+            # self.writer.AddLine('DB Disconnected',False)
 
 
     def Search(self):
@@ -229,7 +229,7 @@ class MainUI(object):
         self.tblDlg = []
         self.colResUI = []
         self.writer = TextHandler()
-        self.writer.addFile()
+        # self.writer.addFile()
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
