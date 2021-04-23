@@ -94,4 +94,9 @@ class DB:
     def Close(self):
         self.cursor.close()
         self.con.close()
+        print('析构了')
 
+    def __del__(self):
+        self.cursor.close()
+        self.con.close()
+        print('析构了')

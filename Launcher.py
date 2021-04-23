@@ -186,6 +186,7 @@ class MainUI(object):
         query+= ' '
         rowCount = table.rowCount()
         condlist = []
+
         for row in range(rowCount):
             colname = table.item(row, 0).text()
             colvalue = table.cellWidget(row,3).currentText()
@@ -209,7 +210,7 @@ class MainUI(object):
         self.resUI = QtWidgets.QWidget()
         diag.setupUi(self.resUI)
         # add data
-        diag.setupdata(data,tablename,self,query,self.writer)
+        diag.setupdata(data,tablename,self,query,self.writer)#把表中数据安装到界面上
         self.resUI.setWindowTitle(tablename+':Data')
         self.resUI.show()
         self.colResUI.append(self.resUI)
